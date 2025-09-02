@@ -5,7 +5,7 @@ use super::QuoteGetSwapModeEnum;
 /// A response returned by Jupiter’s `/quote` endpoint.
 ///
 /// Includes detailed routing, fee, and token swap info.
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct QuoteResponse {
     /// The input token mint address.
@@ -68,21 +68,21 @@ pub struct QuoteResponse {
     pub use_incurred_slippage_for_quoting: Option<serde_json::Value>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PlatformFee {
     pub amount: String,
     pub fee_bps: u16,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct RoutePlanItem {
     pub swap_info: SwapInfo,
     pub percent: i32,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct SwapInfo {
     pub amm_key: String,
@@ -95,7 +95,7 @@ pub struct SwapInfo {
     pub fee_mint: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct MostReliableAmmsQuoteReport {
     pub info: std::collections::HashMap<String, String>,
